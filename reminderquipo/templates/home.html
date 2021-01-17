@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block content %}
+    {% for post in posts %}
+    <article class="media content-section">
+    <div class="media-body">
+        <div class="article-metadata">
+        <!-- <a class="mr-2" >{{ post.author.username }}</a> -->
+        <!-- <small class="text-muted">{{ post.date_posted.strftime('%d-%m-%Y') }}</small> -->
+        <small class="text-secondary">{{ post.date_submission.strftime(' Submission date - %d-%m-%Y,  Time - %H:%M') }}</small>
+        </div>
+        <h2><a class="article-title" href="{{ url_for('post', post_id=post.id) }}">{{ post.title }}</a></h2>
+        <p class="article-content">{{ post.content }}</p>
+        <div>
+                {% if post.state=="in progress" %}
+                    <small class="text-success">In progress</small>
+                {% else %}
+                    <small class="text-danger">Overdue</small>
+                {% endif %}
+            <a class="btn btn-warning btn-sm m-1" href="{{ url_for('delete_post', post_id=post.id) }}">Completed</a>
+        </div>
+    </div>
+    </article>
+    {% endfor %}
+{% endblock content %}  

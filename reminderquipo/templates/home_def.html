@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    
+    {% if title %}
+        <title>Reminderquipo - {{ title }}</title>
+    {% else %}
+        <title>Reminderquipo</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+        <div class="container">
+        <!-- <a class="navbar-brand mr-4 font-weight-bold" href="/">Reminderquipo</a> -->
+        <a class="navbar-brand" href="#">REMINDERQUIPO</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggle">
+            <div class="navbar-nav mr-auto">
+            <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+            <a class="nav-item nav-link" href="{{ url_for('about') }}">About</a>
+            </div>
+            <!-- Navbar Right Side -->
+            <div class="navbar-nav">
+            {% if current_user.is_authenticated %}
+                <a class="nav-item nav-link" href="{{ url_for('new_post') }}">Add Assignment</a>
+                <a class="nav-item nav-link" href="{{ url_for('logout') }}">Logout</a>
+                <a class="nav-item nav-link" href="{{ url_for('account') }}">Account</a>
+            {% else %}
+                <a class="nav-item nav-link" href="{{ url_for('login') }}">Login</a>
+                <a class="nav-item nav-link" href="{{ url_for('register') }}">Register</a>
+            {% endif %}    
+            </div>
+        </div>
+        </div>
+    </nav>
+    </header>
+
+
+<div class="container-fluid ">
+    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img src="{{ im1 }}" class="d-block w-100 " width="100" height="900" alt="...">
+        </div>
+        <div class="carousel-item">
+          <img src="{{ im2 }}" class="d-block w-100 " width="100" height="900" alt="...">
+        </div>
+      </div>
+  </div>
+      <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </a>
+    </div>
+  </div>
+  
+  <div class="container", align="center">
+  <a type="button" class="btn btn-primary btn-lg btn-block mt-3 mb-3", href="{{ url_for('login') }}">Login</a>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a type="button" class="btn btn-success btn-lg btn-block mt-3 mb-3", href="{{ url_for('register') }}">Sign Up</a>
+
+</div>
+<div class="container">
+    <div class="row mb-2">
+      <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">Smart Reminder</strong>
+            <h3 class="mb-0">Featured Alarm</h3><br>
+            <!-- <div class="mb-1 text-muted">Jan 16</div> -->
+            <p class="card-text mb-auto">It's a smart Alarm to alert Students by their official Email.
+              So they can Submit Assignment on time. </p>
+            <!-- <a href="#" class="stretched-link">Continue reading</a> -->
+          </div>
+          <div class="col-auto d-none d-lg-block">
+           
+            <image class="bd-placeholder-img" width="200" height="250" src="{{ im3 }}" alt=""></image>
+  
+          </div>
+        </div>
+      </div>
+      
+  
+        <div class="col-md-6">
+          <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-success">Smart Work</strong>
+              <h3 class="mb-0">Easy Working</h3><br>
+              <!-- <div class="mb-1 text-muted">Jan 17</div> -->
+              <p class="mb-auto">Just add your assignments in Reminderquipo and never worry about forgetting your assignments
+              again.
+              </p>
+              <!-- <a href="#" class="stretched-link">Continue reading</a> -->
+            </div>
+            <div class="col-auto d-none d-lg-block">
+              <image class="bd-placeholder-img" width="200" height="250" src="{{ im4 }}" alt=""></image>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+      
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+</body>
+</html>
